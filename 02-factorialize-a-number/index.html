@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Factorialize a Number</h1>
+		<p>5! = 5 * 4 * 3 * 2 * 1</p>
+
+		<script>
+			const factorializeNumber = (number) => {
+				let result;
+				if (number == 0) {
+					result = 1;
+					console.log(result);
+				} else {
+					for (let i = number - 1; i > 0; i--) {
+						result = number *= i;
+					}
+					console.log(number);
+				}
+			};
+			factorializeNumber(0);
+		</script>
+	</body>
+</html>
