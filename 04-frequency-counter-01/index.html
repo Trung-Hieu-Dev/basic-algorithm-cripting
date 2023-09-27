@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Algorithm - Frequency Counter Pattern</title>
+	</head>
+	<body>
+		<h1>Frequency Counter Pattern - validAnagram</h1>
+
+		<script>
+			/*
+			Frequency Counter - validAnagram
+			Given two strings, write a function to determine if the second string is an anagram of the first. 
+			An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
+
+			Examples:
+
+			validAnagram('', '') // true
+			validAnagram('aaz', 'zza') // false
+			validAnagram('anagram', 'nagaram') // true
+			validAnagram("rat","car") // false) // false
+			validAnagram('awesome', 'awesom') // false
+			validAnagram('amanaplanacanalpanama', 'acanalmanplanpamana') // false
+			validAnagram('qwerty', 'qeywrt') // true
+			validAnagram('texttwisttime', 'timetwisttext') // true
+			Note: You may assume the string contains only lowercase alphabets.
+
+			Time Complexity - O(n)
+			
+			*/
+
+			function validAnagram(first, second) {
+				// Check if the lengths of the two strings are different
+				if (first.length !== second.length) {
+					return false; // Not anagrams
+				}
+
+				const lookup = {};
+
+				// Create a lookup object to store the frequency of each character in the first string
+				for (let index = 0; index < first.length; index++) {
+					let letter = first[index];
+					lookup[letter] = (lookup[letter] || 0) + 1;
+				}
+
+				// Iterate over the characters in the second string
+				for (let index = 0; index < second.length; index++) {
+					let letter = second[index];
+
+					// If a character is not found in the lookup object or its frequency is already zero, return false
+					if (!lookup[letter]) {
+						return false; // Not anagrams
+					} else {
+						lookup[letter] -= 1; // Decrease the frequency of the character in the lookup object
+					}
+				}
+
+				return true; // Anagrams
+			}
+
+			const result = validAnagram('texttwisttime', 'timetwisttext');
+			console.log(result);
+		</script>
+	</body>
+</html>

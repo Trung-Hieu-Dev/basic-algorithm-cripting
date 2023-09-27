@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Algorithm - Frequency Counter Pattern</title>
-  </head>
-  <body>
-    <h1>Algorithm - Frequency Counter Pattern</h1>
-    <p>Checking two arrays with conditions:</p>
-    <ul>
-      <li>
-        <b>Corresponding values squared</b> of Array 1 which must be in the
-        Array 2
-      </li>
-      <li>Two arrays has <b>same frequency</b></li>
-    </ul>
-    <p>Check the result in <b>Browser Console</b></p>
-    <p>
-      <b style="color: red">Note:</b>
-      <em>It would be better with O(n) in result</em>
-    </p>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Algorithm - Frequency Counter Pattern</title>
+	</head>
+	<body>
+		<h1>Algorithm - Frequency Counter Pattern</h1>
+		<p>Checking two arrays with conditions:</p>
+		<ul>
+			<li>
+				<b>Corresponding values squared</b> of Array 1 which must be in
+				the Array 2
+			</li>
+			<li>Two arrays has <b>same frequency</b></li>
+		</ul>
+		<p>Check the result in <b>Browser Console</b></p>
+		<p>
+			<b style="color: red">Note:</b>
+			<em>It would be better with O(n) in result</em>
+		</p>
 
-    <script>
-      /* BigO -> O(n^2)*/
-      /*
+		<script>
+			/* BigO -> O(n^2)*/
+			/*
       function same(arr1, arr2) {
         if (arr1.length !== arr2.length) {
           return false;
@@ -40,55 +40,57 @@
       }
       */
 
-      /* BigO -> O(n) */
-      function same(arr1, arr2) {
-        // two arrays must be equal length
-        if (arr1.length !== arr2.length) {
-          return false;
-        }
+			/* BigO -> O(n) */
+			function same(arr1, arr2) {
+				// two arrays must be equal length
+				if (arr1.length !== arr2.length) {
+					return false;
+				}
 
-        // calculating element frequency of arr1
-        let frequencyCounter1 = {};
-        for (const val of arr1) {
-          frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
-        }
+				// calculating element frequency of arr1
+				let frequencyCounter1 = {};
+				for (const val of arr1) {
+					frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+				}
 
-        // calculating element frequency of arr2
-        let frequencyCounter2 = {};
-        for (const val of arr2) {
-          frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
-        }
+				// calculating element frequency of arr2
+				let frequencyCounter2 = {};
+				for (const val of arr2) {
+					frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+				}
 
-        // checking same frequency
-        if (
-          Object.keys(frequencyCounter1).length !==
-          Object.keys(frequencyCounter2).length
-        ) {
-          return false;
-        }
+				// checking same frequency
+				if (
+					Object.keys(frequencyCounter1).length !==
+					Object.keys(frequencyCounter2).length
+				) {
+					return false;
+				}
 
-        // checking corresponding value squared
-        for (const key in frequencyCounter1) {
-          if (!(key ** 2 in frequencyCounter2)) {
-            return false;
-          }
-        }
+				// checking corresponding value squared
+				for (const key in frequencyCounter1) {
+					if (!(key ** 2 in frequencyCounter2)) {
+						return false;
+					}
+				}
 
-        return true;
-      }
+				return true;
+			}
 
-      const array1 = [1, 1, 2, 3];
-      const array2 = [1, 1, 9, 4];
-      const array3 = [1, 3, 9, 4];
-      const array4 = [1, 3, 9, 4];
+			const array1 = [1, 1, 2, 3];
+			const array2 = [1, 1, 9, 4];
+			const array3 = [1, 3, 9, 4];
+			const array4 = [1, 3, 9, 4];
 
-      const result1 = same(array1, array2);
-      const result2 = same(array1, array3);
-      const result3 = same(array1, array4);
+			const result1 = same(array1, array2);
+			const result2 = same(array1, array3);
+			const result3 = same(array1, array4);
 
-      console.log(result1); // return true
-      console.log(result2); // return false
-      console.log(result3); // return false
-    </script>
-  </body>
+			console.log(result1); // return true
+			console.log(result2); // return false
+			console.log(result3); // return false
+
+			
+		</script>
+	</body>
 </html>
