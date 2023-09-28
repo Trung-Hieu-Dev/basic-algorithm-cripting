@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Algorithm - Frequency Counter Pattern</title>
+	</head>
+	<body>
+		<h1>Multiple Pointers Pattern</h1>
+
+		<p>
+			Creating pointers or values that correspond to an index or position
+			and move towards the beginning, end or middle based on the certain
+			condition. Very efficient for solving problems with mini space
+			complexity as well
+		</p>
+
+		<p>
+			Tạo con trỏ hoặc giá trị tương ứng với một chỉ mục hoặc vị trí và di
+			chuyển về đầu, cuối hoặc giữa dựa trên điều kiện nhất định. Rất hiệu
+			quả để giải quyết các vấn đề với độ phức tạp không gian nhỏ
+		</p>
+
+		<script>
+			/*
+				Challenge:
+				
+				Implement a function called countUniqueValues(), which accepts a
+				sorted array, and count the unique values in the array. There can
+				be negative numbers in the array, but it will always be sorted.
+
+				countUniqueValues([1,1,1,1,1,2]) => 2
+				countUniqueValues([]) => 0
+				countUniqueValues([1,1,2,2,2,5,6]) => 4
+			*/
+
+			function countUniqueValues(arr) {
+				var i = 0;
+				if (arr.length !== 0) {
+					for (let j = 1; j < arr.length; j++) {
+						if (arr[i] !== arr[j]) {
+							i++;
+							arr[i] = arr[j];
+						}
+					}
+					return i + 1;
+				}
+
+				return (i = 0);
+			}
+
+			const result = countUniqueValues([1, 1, 1, 1, 1, 2]);
+			console.log(result);
+		</script>
+	</body>
+</html>
