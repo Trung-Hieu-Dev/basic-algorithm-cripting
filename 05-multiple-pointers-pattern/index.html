@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Algorithm - Frequency Counter Pattern</title>
+	</head>
+	<body>
+		<h1>Multiple Pointers Pattern</h1>
+
+		<p>
+			Creating pointers or values that correspond to an index or position
+			and move towards the beginning, end or middle based on the certain
+			condition. Very efficient for solving problems with mini space
+			complexity as well
+		</p>
+
+		<p>
+			Tạo con trỏ hoặc giá trị tương ứng với một chỉ mục hoặc vị trí và di
+			chuyển về đầu, cuối hoặc giữa dựa trên điều kiện nhất định. Rất hiệu
+			quả để giải quyết các vấn đề với thành phố phức tạp không gian nhỏ
+		</p>
+
+		<script>
+			/*
+				Example:
+				Write a function call sumZero() which accepts sorted array of integers.
+				The function should find the first pair where sum is 0. Return an arrays
+				that includes both values that sum to zero or undefine if pair does not
+				exist
+
+				sumZero([-3, -2, -1, 0, 1, 2, 3]) => [-3, 3]
+				sumZero([-2, 0, 1, 3]) => undefined
+				sumZero([1, 2, 3]) => undefined
+			*/
+
+			// Option 1: BigO = O(n^2)
+			/*
+			function sumZero(arr) {
+				for (let i = 0; i < arr.length; i++) {
+					for (let j = 1; j < arr.length; j++) {
+						if (arr[i] + arr[j] === 0) {
+							return [arr[i], arr[j]];
+						}
+					}
+				}
+				return undefined;
+			}
+			const result = sumZero([1, 2, 3]);
+			console.log(result);
+			*/
+
+			// Option 2: Refactoring code => Time Complexity = O(n), Space Complexity = O(1)
+			function sumZero(arr) {
+				let left = 0;
+				let right = arr.length - 1;
+
+				while (left < right) {
+					let sum = arr[left] + arr[right];
+					if (sum === 0) {
+						return [arr[left], arr[right]];
+					} else if (sum > 0) {
+						right--;
+					} else {
+						left++;
+					}
+				}
+			}
+
+			const result = sumZero([-3, -2, -1, 0, 1, 2, 3]);
+			console.log(result);
+		</script>
+	</body>
+</html>
