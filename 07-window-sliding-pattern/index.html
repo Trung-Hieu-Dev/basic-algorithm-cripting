@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Algorithm - Sliding Window Pattern</title>
+	</head>
+	<body>
+		<h1>Sliding Window Pattern</h1>
+
+		<p>
+			This pattern involves creating a Window which can either be an array
+			or number from one position to another. Depending on a certain
+			condition, the window either increases or closes (and a new window
+			is created).
+			<b>
+				Very useful for keeping track of a subset of data in
+				array/string etc
+			</b>
+		</p>
+
+		<p>
+			Mẫu này liên quan đến việc tạo ra một Cửa sổ có thể là một mảng hoặc
+			một số từ một vị trí này đến vị trí khác. Tùy thuộc vào một điều
+			kiện nhất định, cửa sổ có thể mở rộng hoặc đóng lại (và tạo ra một
+			cửa sổ mới).
+			<b>
+				Rất hữu ích để theo dõi một tập hợp dữ liệu con trong một mảng/
+				chuỗi và các trường hợp tương tự khác.
+			</b>
+		</p>
+
+		<script>
+			/*
+				Example:
+
+				- Writing a function called maxSubArraySum() which accepts an array integers
+				and number called n.
+				- The function should calculate the maximum sum of n consecutive elements in
+				the array.
+
+				maxSubArraySum([1,2,5,2,8,1,5], 2) => 10
+				maxSubArraySum([1,2,5,2,8,1,5], 4) => 17
+				maxSubArraySum([4,2,1,6], 1) => 6
+				maxSubArraySum([4,2,1,6,2], 4) => 13
+				maxSubArraySum([], 4) => null
+			*/
+
+			// Option 1
+			// function maxSubArraySum(arr, num) {
+			// 	if (arr.length < num) {
+			// 		return null;
+			// 	}
+
+			// 	var max = -Infinity;
+
+			// 	const length = arr.length - num + 1;
+			// 	for (let i = 0; i < length; i++) {
+			// 		let sum = 0;
+			// 		for (let j = 0; j < num; j++) {
+			// 			sum += arr[i + j];
+			// 		}
+			// 		if (sum > max) {
+			// 			max = sum;
+			// 		}
+			// 	}
+
+			// 	return max;
+			// }
+			// const result = maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 2);
+			// console.log(result);
+
+			// Refactor
+			function maxSubArraySum(array, num) {
+				let maxSum = 0;
+				let tempSum = 0;
+				const length = array.length;
+
+				if (length < num) return null;
+
+				for (let i = 0; i < num; i++) {
+					maxSum += array[i];
+				}
+
+				tempSum = maxSum;
+				for (let i = num; i < length; i++) {
+					tempSum = tempSum + array[i] - array[i - num];
+					maxSum = Math.max(maxSum, tempSum);
+				}
+
+				return maxSum;
+			}
+
+			const result = maxSubArraySum([1, 2, 5, 2, 8, 1, 5], 4);
+			console.log(result);
+		</script>
+	</body>
+</html>
