@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Algorithm - Divide and Conquer Pattern</title>
+	</head>
+	<body>
+		<h1>Divide and Conquer Pattern</h1>
+
+		<p>
+			This pattern invokes diving a data set into a smaller chunks and
+			then repeating the process with a subset of data
+			<b> This pattern can tremendously decrease time complexity </b>
+		</p>
+
+		<p>
+			Dạng Chia để trị. Chia nhỏ tập dữ liệu thành các khối nhỏ và sau đó
+			lặp lại quá trình với tập hợp dữ liệu con
+			<b> Ưu điểm: tối ưu độ phức tạp thời gian thực thi </b>
+		</p>
+
+		<script>
+			/*
+				Example:
+
+				- Give the sorted array of integers, write a function called search, 
+				that accepts value and return the index of value. If the value is not 
+				in the array, return -1.
+
+				search([1,2,3,4,5,6], 4) => 3
+				search([1,2,3,4,5,6], 6) => 5
+				search([1,2,3,4,5,6], 11) => -1
+			*/
+
+			// Option 1
+			// function search(array, num) {
+			// 	const length = array.length;
+			// 	for (let i = 0; i < length; i++) {
+			// 		if (array[i] === num) {
+			// 			return i;
+			// 		}
+			// 	}
+			// 	return -1;
+			// }
+
+			// const result = search([1, 2, 3, 4, 5, 6], 5);
+			// console.log("O(n)", result);
+
+			// Refactor
+			function search(array, num) {
+				let min = 0;
+				let max = array.length - 1;
+				while (min < max) {
+					let mid = Math.floor((min + max) / 2);
+
+					if (array[mid] === num) {
+						return mid;
+					}
+
+					if (array[mid] > num) {
+						max = array[mid] - 1;
+					}
+
+					if (array[mid] < num) {
+						min = array[mid] + 1;
+					}
+				}
+
+				return -1;
+			}
+
+			const result = search([1, 2, 3, 4, 5, 6], 5);
+			console.log("O(n)", result);
+
+			// Option 2
+			// Function for binary search method
+			function searchBinary(array, num) {
+				// Initialize two variables to store the min and max boundaries of the search range
+				let min = 0;
+				let max = array.length - 1;
+				// Loop until min is less than or equal to max
+				while (min <= max) {
+					// Calculate the middle index of the search range
+					let mid = Math.floor((min + max) / 2);
+					// If the element at middle index matches the num
+					if (array[mid] === num) {
+						// Return the index of the element
+						return mid;
+					}
+					// If the element at middle index is greater than the num
+					if (array[mid] > num) {
+						// Update the max boundary to be mid-1
+						max = mid - 1;
+					}
+					// If the element at middle index is less than the num
+					if (array[mid] < num) {
+						// Update the min boundary to be mid+1
+						min = mid + 1;
+					}
+				}
+				// If the element is not found, return -1
+				return -1;
+			}
+			const result1 = searchBinary([1, 2, 3, 4, 5, 6], 5);
+			console.log("O(log n)", result1);
+		</script>
+	</body>
+</html>
