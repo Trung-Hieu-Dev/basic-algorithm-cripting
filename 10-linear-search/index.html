@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Searching Algorithms</title>
+	</head>
+	<body>
+		<h1>The Linear Search</h1>  
+
+		<script>
+			/**
+			 * Let's search for 12 with given array [ 5, 8, 1, 100, 12, 3 ]
+			*/
+			function linearSearch(arr, value) {
+				if (arr.length === 0) {
+					return -1
+				}
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i] === value) {
+						return i
+					}
+				}
+				return -1
+			}
+
+			const result = linearSearch([ 5, 8, 1, 100, 12, 3 ], 8)
+			console.log(result);
+		</script>
+	</body>
+</html>
